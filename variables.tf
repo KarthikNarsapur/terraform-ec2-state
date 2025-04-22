@@ -3,10 +3,10 @@ variable "region" {
   default = "ap-south-1"
 }
 
-variable "instance-id" {
+variable "instanceId" {
   type = string
 }
 
-variable "instance-state" {
+variable "instanceState" {
   type = string
 }
