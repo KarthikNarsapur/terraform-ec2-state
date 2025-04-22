@@ -21,7 +21,7 @@ jobs:
   ec2-instance-stop:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event.inputs.action == 'stop' }}
+    if: ${{ github.event.inputs.instanceState == 'stop' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
   ec2-instance-start:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event.inputs.action == 'start' }}
+    if: ${{ github.event.inputs.instanceState == 'start' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -75,7 +75,7 @@ jobs:
   ec2-instance-terminate:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event.inputs.action == 'terminate' }}
+    if: ${{ github.event.inputs.instanceState == 'terminate' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
