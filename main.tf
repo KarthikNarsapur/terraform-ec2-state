@@ -17,6 +17,6 @@ terraform {
 }
 
 resource "aws_ec2_instance_state" "destroy_ec2" {
-  instance_id = var.instance-id
-  state       = var.instance-state
+  instance_id = var.instanceId
+  state       = var.instanceState
 }
