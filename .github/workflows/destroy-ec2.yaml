@@ -6,10 +6,10 @@ on:
       region:
           description: 'AWS Region'
           required: true
-      instance-id:
+      instanceId:
           description: 'Instance ID'
           required: true
-      instance-state:
+      instanceState:
           description: 'Instance state (Stop/Start/Terminate)'
           required: true
 
@@ -43,7 +43,7 @@ jobs:
       run: terraform validate
      
     - name: Terraform Apply
-      run: terraform apply -var instance-id=${{ github.event.inputs.instance-id }} -var region=${{ github.event.inputs.region }} -var instance-state=${{ github.event.inputs.instance-state }} -auto-approve
+      run: terraform apply -var instanceId=${{ github.event.inputs.instanceId }} -var region=${{ github.event.inputs.region }} -var instanceState=${{ github.event.inputs.instanceState }} -auto-approve
 
   ec2-instance-start:
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
       run: terraform validate
      
     - name: Terraform Apply
-      run: terraform apply -var instance-id=${{ github.event.inputs.instance-id }} -var region=${{ github.event.inputs.region }} -var instance-state=${{ github.event.inputs.instance-state }} -auto-approve
+      run: terraform apply -var instanceId=${{ github.event.inputs.instanceId }} -var region=${{ github.event.inputs.region }} -var instanceState=${{ github.event.inputs.instanceState }} -auto-approve
 
   ec2-instance-terminate:
     runs-on: ubuntu-latest
@@ -94,4 +94,4 @@ jobs:
       run: terraform init
       
     - name: Terraform Destroy
-      run: terraform apply -var instance-id=${{ github.event.inputs.instance-id }} -var region=${{ github.event.inputs.region }} -var instance-state=${{ github.event.inputs.instance-state }} -auto-approve
+      run: terraform apply -var instanceId=${{ github.event.inputs.instanceId }} -var region=${{ github.event.inputs.region }} -var instanceState=${{ github.event.inputs.instanceState }} -auto-approve
