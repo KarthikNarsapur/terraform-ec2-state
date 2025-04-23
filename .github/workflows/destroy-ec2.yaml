@@ -21,7 +21,7 @@ jobs:
   ec2-instance-stop:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event.inputs.instanceState == 'stop' }}
+    if: ${{ github.event.inputs.instanceState == 'stopped' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
   ec2-instance-start:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event.inputs.instanceState == 'start' }}
+    if: ${{ github.event.inputs.instanceState == 'running' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -94,4 +94,4 @@ jobs:
       run: terraform init
       
     - name: Terraform Destroy
-      run: terraform apply -var instanceId=${{ github.event.inputs.instanceId }} -var region=${{ github.event.inputs.region }} -var instanceState=${{ github.event.inputs.instanceState }} -auto-approve
+      run: terraform destroy -var instanceId=${{ github.event.inputs.instanceId }} -var region=${{ github.event.inputs.region }} -var instanceState=${{ github.event.inputs.instanceState }} -auto-approve
